@@ -24,7 +24,7 @@ export default function CategoriesScreen({
 }: CategoriesScreenProps) {
   function renderCategoryItem({ item }: IRenderItem) {
     function pressHandler() {
-      navigation.navigate("MealsOverview");
+      navigation.navigate("MealsOverview", { categoryId: item.id });
     }
 
     return (
