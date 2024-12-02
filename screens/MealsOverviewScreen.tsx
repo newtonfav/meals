@@ -1,8 +1,8 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import React from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import { Text, View, StyleSheet, FlatList } from "react-native";
 import { MealsStackNavigatorParamList } from "../models/types";
-import { MEALS } from "../data/dummy-data";
+import { MEALS, CATEGORIES } from "../data/dummy-data";
 import MealItem from "../components/MealItem";
 
 type MealsOverviewScreenProps = NativeStackScreenProps<
@@ -32,11 +32,23 @@ interface IRenderItem {
 
 export default function MealsOverviewScreen({
   route,
+  navigation,
 }: MealsOverviewScreenProps) {
   const { categoryId } = route.params;
 
   const displayedMeals = MEALS.filter((mealItem) =>
     mealItem.categoryIds.includes(categoryId)
+  );
+
+  useLayoutEffect(
+    function () {
+      const categoryTitle = CATEGORIES.find(
+        (category) => category.id === categoryId
+      )?.title;
+
+      navigation.setOptions({ title: categoryTitle });
+    },
+    [navigation, categoryId]
   );
 
   function renderMealItem({ item }: IRenderItem) {
