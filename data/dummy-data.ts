@@ -334,4 +334,33 @@ export const MEALS = [
     true,
     true
   ),
+  new Meal(
+    "m10",
+    ["c2", "c5", "c10"],
+    "Asparagus Salad with Cherry Tomatoes",
+    "luxurious",
+    "simple",
+    "https://cdn.pixabay.com/photo/2018/04/09/18/26/asparagus-3304997_1280.jpg",
+    30,
+    [
+      "White and Green Asparagus",
+      "30g Pine Nuts",
+      "300g Cherry Tomatoes",
+      "Salad",
+      "Salt, Pepper and Olive Oil",
+    ],
+    [
+      "Wash, peel and cut the asparagus",
+      "Cook in salted water",
+      "Salt and pepper the asparagus",
+      "Roast the pine nuts",
+      "Halve the tomatoes",
+      "Mix with asparagus, salad and dressing",
+      "Serve with Baguette",
+    ],
+    true,
+    true,
+    true,
+    true
+  ),
 ];
