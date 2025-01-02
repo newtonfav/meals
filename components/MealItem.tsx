@@ -7,17 +7,27 @@ import {
   Platform,
 } from "react-native";
 import { IMealItem } from "../screens/MealsOverviewScreen";
+import { useNavigation, NavigationProp } from "@react-navigation/native";
+import { MealsStackNavigatorParamList } from "../models/types";
 
 interface MealItemProps {
   item: IMealItem;
 }
 
 export default function MealItem({ item }: MealItemProps) {
+  const navigation =
+    useNavigation<NavigationProp<MealsStackNavigatorParamList>>();
+
+  function navigateToMealDetails() {
+    navigation.navigate("MealDetails", { mealId: item.id });
+  }
+
   return (
     <View style={styles.mealItem}>
       <Pressable
         android_ripple={{ color: "#ccc" }}
         style={({ pressed }) => (pressed ? styles.buttonPressed : null)}
+        onPress={navigateToMealDetails}
       >
         <View style={styles.innerContainer}>
           <View>
